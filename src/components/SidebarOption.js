@@ -7,8 +7,9 @@ function SidebarOption({Icon, title, addChannelOption}) {
     const addChannel = () => {};
     const selectChannel = () => {};
     return (
-        <SidebarOptionContainer>
+        <SidebarOptionContainer
             onClick = {addChannelOption ? addChannel : selectChannel}
+            >
             {/* if an icon was passed in...i.e. not a channel */}
             {Icon && <Icon frontsize='small' style={{padding : 10}} />}  
             {Icon ? (
