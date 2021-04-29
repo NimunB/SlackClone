@@ -1,10 +1,14 @@
 import React from 'react';
 import styled from "styled-components";
 import { db } from "../firebase";
+import { useDispatch } from "react-redux";
+import { enterRoom } from "../features/appSlice";
 
 // taking in props: icon and title
 // destructuring props
 function SidebarOption({ Icon, title, addChannelOption, id }) {
+    // gun to shoot actions into global store
+    const dispatch = useDispatch();
 
     const addChannel = () => {
         const channelName = prompt('Please enter the channel name');
@@ -17,7 +21,15 @@ function SidebarOption({ Icon, title, addChannelOption, id }) {
         }
     };
 
-    const selectChannel = () => {};
+    // retrieving from global store
+    const selectChannel = () => {
+        // if added channel
+        if (id) {
+            dispatch(enterRoom ({
+                roomId: id
+            }))
+        }
+    };
 
     return (
         <SidebarOptionContainer
